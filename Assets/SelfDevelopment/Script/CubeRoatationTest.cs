@@ -7,6 +7,8 @@ using Leap;
 
 public class CubeRoatationTest : MonoBehaviour {
 
+    public GameObject LeapHandController;
+    public float RotationSpeed = 0.2f;
 
     Quaternion handRotation;
     Quaternion lastHandRotation;
@@ -14,18 +16,23 @@ public class CubeRoatationTest : MonoBehaviour {
     Vector3 handRotationEuler;
     Vector3 lastHandRotationEuler;
 
+    Vector3 initialInHandRotationEuler;
+    Vector3 initialInCubeRotationEuler;
+    bool isInitial;
+
     float timeStamp;
 
-    public GameObject LeapHandController;
+    
     //Rigidbody rb;
     LeapServiceProvider leapServiceProvider;
 
-	void Start () {
+	void Awake () {
         leapServiceProvider = LeapHandController.GetComponent<LeapServiceProvider>();
         lastHandRotation = Quaternion.identity;
+        isInitial = true;
 	}
 
-    void Update()
+    void FixedUpdate()
     {
         //handRotation = Quaternion.identity;
         if (leapServiceProvider.HasHand())
@@ -33,37 +40,42 @@ public class CubeRoatationTest : MonoBehaviour {
             timeStamp += Time.deltaTime;
             if (timeStamp > 0.1f)
             {
-                handRotation = leapServiceProvider.GetHandRoatatation();
-                handRotationEuler = leapServiceProvider.GetHandRotationEuler();
+                if (isInitial)
+                {
+                    initialInHandRotationEuler = leapServiceProvider.GetHandRotationEuler();
+                    initialInCubeRotationEuler = transform.eulerAngles;
+                    isInitial = false;
+                }
+                else
+                {
+                    handRotation = leapServiceProvider.GetHandRoatatation();
+                    handRotationEuler = leapServiceProvider.GetHandRotationEuler();
 
-                //float x = transform.rotation.x + handRotation.x - lastHandRotation.x;
-                //float y = transform.rotation.y + handRotation.y - lastHandRotation.y;
-                //float z = transform.rotation.z + handRotation.z - lastHandRotation.z;
-                //float w = transform.rotation.z + handRotation.w - lastHandRotation.w;
+                    //Debug.Log(initialInHandRotationEuler.ToString());
 
-                //Quaternion deltaHandRotation = new Quaternion(x, y, z, w);
+                    //Vector3 deltaEular = handRotationEuler - lastHandRotationEuler;
+                    Vector3 deltaEuler = handRotationEuler - initialInHandRotationEuler;
+                    Vector3 nowEuler = deltaEuler + initialInCubeRotationEuler;
+                    Debug.Log(nowEuler.ToString());
+                    //transform.rotation = Quaternion.Slerp(transform.rotation, handRotation, Time.deltaTime * 10f);
 
-                Vector3 deltaEular = handRotationEuler - lastHandRotationEuler;
+                    //Vector3 newEuler = Vector3.Slerp(transform.eulerAngles, nowEuler, RotationSpeed * Time.deltaTime);
+                    //transform.eulerAngles = newEuler;
 
-                Quaternion relative = Quaternion.Inverse(lastHandRotation) * handRotation;
-                
-                //Debug.Log(deltaEular.ToString());
+                    transform.eulerAngles = deltaEuler + initialInCubeRotationEuler;
 
-                //transform.rotation = Quaternion.Slerp(transform.rotation, handRotation, Time.deltaTime * 10f);
-                //transform.rotation = Quaternion.Slerp(transform.rotation, deltaHandRotation, Time.deltaTime * 10f);
-
-                //transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, transform.eulerAngles + deltaEular, Time.deltaTime * 10f);
-                transform.rotation = Quaternion.Slerp(transform.rotation, handRotation, Time.deltaTime * 10f);
-
-                lastHandRotation = handRotation;
-                lastHandRotationEuler = handRotationEuler;
-                
+                    //lastHandRotation = handRotation;
+                    //lastHandRotationEuler = handRotationEuler;
+                }
             }
         }
         else
         {
+            isInitial = true;
             timeStamp = 0f;
         }
     }
+
+    
 	
 }
