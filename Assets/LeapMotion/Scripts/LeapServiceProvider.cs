@@ -225,6 +225,7 @@ namespace Leap.Unity {
 
     public Quaternion GetHandRoatatation()
     {
+        //_transformedFixedFrame.Hands[0].Rotation.ToQuaternion().
         return _transformedUpdateFrame.Hands[0].Rotation.ToQuaternion();
     }
 
@@ -232,6 +233,7 @@ namespace Leap.Unity {
     {
         return _transformedUpdateFrame.Hands[0].Rotation.ToQuaternion().eulerAngles;
     }
+
 
     protected virtual void FixedUpdate() {
       if (_reuseFramesForPhysics) {

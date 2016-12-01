@@ -1,14 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Threading;
+using UnityEngine.UI;
+using Leap;
 using Leap.Unity.Attributes;
 using Leap.Unity;
-using System.Threading;
-using Leap;
 
-public class CubeRoatationTest : MonoBehaviour {
+public class CubeLetRoatation : MonoBehaviour {
 
     public GameObject LeapHandController;
-    public float RotationSpeed = 0.2f;
+    public float RotationSpeed = 10f;
+    public float RotationScale = 1.0f;
+    public Slider SensibilitySlider;
+
+    //public GameObject Anchor;
 
     Quaternion handRotation;
     Quaternion lastHandRotation;
@@ -17,7 +22,9 @@ public class CubeRoatationTest : MonoBehaviour {
     Vector3 lastHandRotationEuler;
 
     Vector3 initialInHandRotationEuler;
+    Quaternion initialInHandRotation;
     Vector3 initialInCubeRotationEuler;
+    Vector3 initialDeltaEuler;
     bool isInitial;
 
     float timeStamp;
@@ -26,14 +33,16 @@ public class CubeRoatationTest : MonoBehaviour {
     //Rigidbody rb;
     LeapServiceProvider leapServiceProvider;
 
-	void Awake () {
+	void Start () {
         leapServiceProvider = LeapHandController.GetComponent<LeapServiceProvider>();
         lastHandRotation = Quaternion.identity;
         isInitial = true;
+        SensibilitySlider.onValueChanged.AddListener(RotationScaleChange);
 	}
 
     void FixedUpdate()
     {
+        Debug.Log(RotationScale);
         //handRotation = Quaternion.identity;
         if (leapServiceProvider.HasHand())
         {
@@ -43,7 +52,9 @@ public class CubeRoatationTest : MonoBehaviour {
                 if (isInitial)
                 {
                     initialInHandRotationEuler = leapServiceProvider.GetHandRotationEuler();
+                    initialInHandRotation = leapServiceProvider.GetHandRoatatation();
                     initialInCubeRotationEuler = transform.eulerAngles;
+                    initialDeltaEuler = initialInHandRotationEuler - initialInCubeRotationEuler;
                     isInitial = false;
                 }
                 else
@@ -51,21 +62,22 @@ public class CubeRoatationTest : MonoBehaviour {
                     handRotation = leapServiceProvider.GetHandRoatatation();
                     handRotationEuler = leapServiceProvider.GetHandRotationEuler();
 
-                    //Debug.Log(initialInHandRotationEuler.ToString());
-
-                    //Vector3 deltaEular = handRotationEuler - lastHandRotationEuler;
                     Vector3 deltaEuler = handRotationEuler - initialInHandRotationEuler;
                     Vector3 nowEuler = deltaEuler + initialInCubeRotationEuler;
-                    Debug.Log(nowEuler.ToString());
-                    //transform.rotation = Quaternion.Slerp(transform.rotation, handRotation, Time.deltaTime * 10f);
 
-                    //Vector3 newEuler = Vector3.Slerp(transform.eulerAngles, nowEuler, RotationSpeed * Time.deltaTime);
-                    //transform.eulerAngles = newEuler;
+                    Quaternion delta = Quaternion.Inverse(handRotation) * initialInHandRotation;
 
-                    transform.eulerAngles = deltaEuler + initialInCubeRotationEuler;
+                    //transform.rotation = Quaternion.Euler(deltaEuler + initialInCubeRotationEuler);
 
-                    //lastHandRotation = handRotation;
-                    //lastHandRotationEuler = handRotationEuler;
+                    // Good now
+                    transform.rotation = Quaternion.Slerp(transform.rotation,
+                        Quaternion.Euler(deltaEuler) * Quaternion.Euler(initialInCubeRotationEuler),
+                        Time.deltaTime * RotationSpeed * RotationScale);
+
+                    // New
+                    //Quaternion.AngleAxis
+                    //transform.eulerAngles = Quaternion.AngleAxis(90, Vector3.right) * transform.eulerAngles;
+
                 }
             }
         }
@@ -74,6 +86,11 @@ public class CubeRoatationTest : MonoBehaviour {
             isInitial = true;
             timeStamp = 0f;
         }
+    }
+
+    public void RotationScaleChange(float newScale)
+    {
+        RotationScale = newScale;
     }
 
     
