@@ -13,8 +13,6 @@ public class CubeLetRoatation : MonoBehaviour {
     public float RotationScale = 1.0f;
     public Slider SensibilitySlider;
 
-    //public GameObject Anchor;
-
     Quaternion handRotation;
     Quaternion lastHandRotation;
 
@@ -24,28 +22,26 @@ public class CubeLetRoatation : MonoBehaviour {
     Vector3 initialInHandRotationEuler;
     Quaternion initialInHandRotation;
     Vector3 initialInCubeRotationEuler;
-    Vector3 initialDeltaEuler;
+    Vector3 initialHandDirection;
     bool isInitial;
 
     float timeStamp;
 
-    
-    //Rigidbody rb;
     LeapServiceProvider leapServiceProvider;
 
 	void Start () {
         leapServiceProvider = LeapHandController.GetComponent<LeapServiceProvider>();
-        lastHandRotation = Quaternion.identity;
+        //lastHandRotation = Quaternion.identity;
         isInitial = true;
         SensibilitySlider.onValueChanged.AddListener(RotationScaleChange);
 	}
 
     void FixedUpdate()
     {
-        Debug.Log(RotationScale);
         //handRotation = Quaternion.identity;
         if (leapServiceProvider.HasHand())
         {
+            Debug.Log(leapServiceProvider.GetHandRoatatation());
             timeStamp += Time.deltaTime;
             if (timeStamp > 0.1f)
             {
@@ -54,29 +50,50 @@ public class CubeLetRoatation : MonoBehaviour {
                     initialInHandRotationEuler = leapServiceProvider.GetHandRotationEuler();
                     initialInHandRotation = leapServiceProvider.GetHandRoatatation();
                     initialInCubeRotationEuler = transform.eulerAngles;
-                    initialDeltaEuler = initialInHandRotationEuler - initialInCubeRotationEuler;
+                    initialHandDirection = leapServiceProvider.GetHandDirection();
                     isInitial = false;
                 }
                 else
                 {
+                    
                     handRotation = leapServiceProvider.GetHandRoatatation();
                     handRotationEuler = leapServiceProvider.GetHandRotationEuler();
 
-                    Vector3 deltaEuler = handRotationEuler - initialInHandRotationEuler;
-                    Vector3 nowEuler = deltaEuler + initialInCubeRotationEuler;
+                    //Vector3 deltaEuler = handRotationEuler - initialInHandRotationEuler;
 
-                    Quaternion delta = Quaternion.Inverse(handRotation) * initialInHandRotation;
+                    //this is wrong!
+                    Quaternion deltaEuler = Quaternion.FromToRotation(initialHandDirection, leapServiceProvider.GetHandDirection());
 
-                    //transform.rotation = Quaternion.Euler(deltaEuler + initialInCubeRotationEuler);
+                    // Another test
+                    //Quaternion tmp = Quaternion.RotateTowards(initialInHandRotation, handRotation, 1000f);
+                    Quaternion tmp = handRotation * Quaternion.Inverse(initialInHandRotation);
+
+
+                    //Debug.Log(tmp.eulerAngles);
+                    //if (tmp.eulerAngles.x < 10)
+                    //{
+                    //    tmp.SetEulerAngles(360 - tmp.eulerAngles.x, tmp.eulerAngles.y, tmp.eulerAngles.z); 
+                    //}
+                    //if (tmp.eulerAngles.y < 10)
+                    //{
+                    //    tmp.SetEulerAngles(tmp.eulerAngles.x, 360 - tmp.eulerAngles.y, tmp.eulerAngles.z);
+                    //}
+                    //if (tmp.eulerAngles.z < 10)
+                    //{
+                    //    tmp.SetEulerAngles(tmp.eulerAngles.x, tmp.eulerAngles.y, 360 - tmp.eulerAngles.z);
+                    //}
+
+                    //deltaEuler = Quaternion.LookRotation(MainCameraTransform.eulerAngles) * deltaEuler;
+                    //deltaEuler = Quaternion.FromToRotation(initialHandDirection, Vector3.forward) * deltaEuler;
 
                     // Good now
-                    transform.rotation = Quaternion.Slerp(transform.rotation,
-                        Quaternion.Euler(deltaEuler) * Quaternion.Euler(initialInCubeRotationEuler),
-                        Time.deltaTime * RotationSpeed * RotationScale);
+                    //transform.rotation = Quaternion.Slerp(transform.rotation,
+                    //    Quaternion.Euler(deltaEuler) * Quaternion.Euler(initialInCubeRotationEuler),
+                    //    Time.deltaTime * RotationSpeed * RotationScale);
 
-                    // New
-                    //Quaternion.AngleAxis
-                    //transform.eulerAngles = Quaternion.AngleAxis(90, Vector3.right) * transform.eulerAngles;
+                    transform.rotation = Quaternion.Slerp(transform.rotation,
+                        tmp * Quaternion.Euler(initialInCubeRotationEuler),
+                        Time.deltaTime * RotationSpeed * RotationScale);
 
                 }
             }

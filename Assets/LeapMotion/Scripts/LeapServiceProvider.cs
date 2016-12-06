@@ -223,6 +223,34 @@ namespace Leap.Unity {
         }
     }
 
+    //public float[] GetHandDirection()
+    //{
+    //    //tmp();
+    //    return UnityVectorExtension.ToVector3(_transformedUpdateFrame.Hands[0].Direction);
+    //    //float[] tmp = new float[3];
+    //    //tmp[0] = _transformedUpdateFrame.Hands[0].Direction.x;
+    //    //tmp[1] = _transformedUpdateFrame.Hands[0].Direction.y;
+    //    //tmp[2] = _transformedUpdateFrame.Hands[0].Direction.z;
+    //    //return tmp;
+        
+    //}
+
+    public Vector3 GetHandDirection()
+    {
+        //tmp();
+        return UnityVectorExtension.ToVector3(_transformedUpdateFrame.Hands[0].Direction);
+        //float[] tmp = new float[3];
+        //tmp[0] = _transformedUpdateFrame.Hands[0].Direction.x;
+        //tmp[1] = _transformedUpdateFrame.Hands[0].Direction.y;
+        //tmp[2] = _transformedUpdateFrame.Hands[0].Direction.z;
+        //return tmp;
+
+    }
+
+    public void tmp()
+    {
+        Debug.Log(_transformedUpdateFrame.Hands[0].Direction.x);
+    }
     public Quaternion GetHandRoatatation()
     {
         //_transformedFixedFrame.Hands[0].Rotation.ToQuaternion().
