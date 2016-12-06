@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-public class BackToHomeButton : MonoBehaviour
+public class LoadToHome : MonoBehaviour
 {
     public int sceneHome = 0;
 
@@ -12,7 +12,7 @@ public class BackToHomeButton : MonoBehaviour
 
     }
 
-    public void BackToHomeClicked()
+    public void LoadToHomeScene()
     {
         SceneManager.LoadScene(sceneHome);
     }

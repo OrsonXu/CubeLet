@@ -41,7 +41,7 @@ public class CubeLetRoatation : MonoBehaviour {
         //handRotation = Quaternion.identity;
         if (leapServiceProvider.HasHand())
         {
-            Debug.Log(leapServiceProvider.GetHandRoatatation());
+            //Debug.Log(leapServiceProvider.GetHandRoatatation());
             timeStamp += Time.deltaTime;
             if (timeStamp > 0.1f)
             {

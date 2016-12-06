@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-public class LoadToLevelButton : MonoBehaviour
+public class LoadToLevel : MonoBehaviour
 {
 
 	// Use this for initialization
@@ -17,6 +17,6 @@ public class LoadToLevelButton : MonoBehaviour
 
     public void LoadToLevelScene()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("ChooseLevel");
     }
 }

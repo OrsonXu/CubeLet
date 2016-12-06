@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
-public class JudgeFinish : MonoBehaviour {
+public class LoadToMusic : MonoBehaviour {
+
+    public int SceneIndex = 2;
 
 	// Use this for initialization
 	void Start () {
@@ -12,4 +15,9 @@ public class JudgeFinish : MonoBehaviour {
 	void Update () {
 	
 	}
+
+    public void LoadToMusicScene()
+    {
+        
+    }
 }

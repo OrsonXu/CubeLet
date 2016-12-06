@@ -2,9 +2,9 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-public class BackToLevelButton : MonoBehaviour {
-
-    public int sceneLevel = 0;
+public class LoadToScene : MonoBehaviour
+{
+    public int SceneIndex = 0;
 
     // Use this for initialization
     void Start()
@@ -12,8 +12,8 @@ public class BackToLevelButton : MonoBehaviour {
 
     }
 
-    public void BackToLevelClicked()
+    public void LoadToSceneIndex()
     {
-        SceneManager.LoadScene(sceneLevel);
+        SceneManager.LoadScene(SceneIndex);
     }
 }
