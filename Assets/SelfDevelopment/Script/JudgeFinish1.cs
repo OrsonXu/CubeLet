@@ -9,6 +9,7 @@ public class JudgeFinish1 : MonoBehaviour {
     public GameObject CubeLet;
     public float range = 10f;
     public Text finishText;
+    public GameObject[] points;
 
     Transform transform;
     bool finished = false;
@@ -36,12 +37,23 @@ public class JudgeFinish1 : MonoBehaviour {
         //finalDirection[6] = new Vector3(-1, -1, 1);
         //finalDirection[7] = new Vector3(-1, -1, -1);
 
-        finalDirection = new Vector3[1];
-        finalDirection[0] = new Vector3(0f,0f,0f);
+        //finalDirection = new Vector3[1];
+        //finalDirection[0] = new Vector3(0f, 1f, 0f);
+
+        finalDirection = new Vector3[points.Length];
+        for (int i = 0; i < points.Length; i++)
+        {
+            finalDirection[i] = points[i].transform.position - CubeLet.transform.position;
+        }
     }
 
     void Update()
     {
+        for (int i = 0; i < points.Length; i++)
+        {
+            finalDirection[i] = points[i].transform.position - CubeLet.transform.position;
+        }
+
         transform = CubeLet.transform;
         if (judge(transform))
         {
@@ -67,21 +79,21 @@ public class JudgeFinish1 : MonoBehaviour {
     {
         for (int i = 0; i < finalDirection.Length; i++)
         {
-            if ((finalDirection[i].x - range <= transform.eulerAngles.x
-                && transform.eulerAngles.x <= finalDirection[i].x + range)
-                &&
-                (finalDirection[i].y - range <= transform.eulerAngles.y
-                && transform.eulerAngles.y <= finalDirection[i].y + range)
-                &&
-                (finalDirection[i].z - range <= transform.eulerAngles.z
-                && transform.eulerAngles.z <= finalDirection[i].z + range))
-            {
-                return true;
-            }
-            //if (Vector3.Angle(finalDirection[i].normalized, Vector3.up) < 20f)
+            //if ((finalDirection[i].x - range <= transform.eulerAngles.x
+            //    && transform.eulerAngles.x <= finalDirection[i].x + range)
+            //    &&
+            //    (finalDirection[i].y - range <= transform.eulerAngles.y
+            //    && transform.eulerAngles.y <= finalDirection[i].y + range)
+            //    &&
+            //    (finalDirection[i].z - range <= transform.eulerAngles.z
+            //    && transform.eulerAngles.z <= finalDirection[i].z + range))
             //{
             //    return true;
             //}
+            if (Vector3.Angle(finalDirection[i].normalized, Vector3.up) < range)
+            {
+                return true;
+            }
         }
         return false;
     }

@@ -9,6 +9,7 @@ public class JudgeFinish : MonoBehaviour {
     public GameObject CubeLet;
     public float range = 10f;
     public Text finishText;
+    public GameObject[] points;
 
     Transform transform;
     bool finished = false;
@@ -36,21 +37,33 @@ public class JudgeFinish : MonoBehaviour {
         //finalDirection[6] = new Vector3(-1, -1, 1);
         //finalDirection[7] = new Vector3(-1, -1, -1);
 
-        finalDirection = new Vector3[3];
-        finalDirection[0] = new Vector3(45f, 45f, 45f);
-        finalDirection[1] = new Vector3(45f, 0f, 45f);
-        finalDirection[2] = new Vector3(45f, -45f, 45f);
+        //finalDirection = new Vector3[3];
+        //finalDirection[0] = new Vector3(45f, 45f, 45f);
+        //finalDirection[1] = new Vector3(45f, 0f, 45f);
+        //finalDirection[2] = new Vector3(45f, -45f, 45f);
+
+        finalDirection = new Vector3[8];
+        for (int i = 0; i < 8; i++)
+        {
+            finalDirection[i] = points[i].transform.position - CubeLet.transform.position;
+        }
     }
 
     void Update()
     {
         transform = CubeLet.transform;
+        for (int i = 0; i < 8; i++)
+        {
+            finalDirection[i] = points[i].transform.position - CubeLet.transform.position;
+        }
+
+        //Debug.Log(finalDirection[0].ToString());
         if (judge(transform))
         {
             timeStamp += Time.deltaTime;
             if (timeStamp >= 0.2f)
             {
-                Debug.Log("Done");
+                //Debug.Log("Done");
                 finish();
             }
             //else
@@ -69,21 +82,21 @@ public class JudgeFinish : MonoBehaviour {
     {
         for (int i = 0; i < finalDirection.Length; i++)
         {
-            if ((finalDirection[i].x - range <= transform.eulerAngles.x
-                && transform.eulerAngles.x <= finalDirection[i].x + range)
-                &&
-                (finalDirection[i].y - range <= transform.eulerAngles.y
-                && transform.eulerAngles.y <= finalDirection[i].y + range)
-                &&
-                (finalDirection[i].z - range <= transform.eulerAngles.z
-                && transform.eulerAngles.z <= finalDirection[i].z + range))
-            {
-                return true;
-            }
-            //if (Vector3.Angle(finalDirection[i].normalized, Vector3.up) < 20f)
+            //if ((finalDirection[i].x - range <= transform.eulerAngles.x
+            //    && transform.eulerAngles.x <= finalDirection[i].x + range)
+            //    &&
+            //    (finalDirection[i].y - range <= transform.eulerAngles.y
+            //    && transform.eulerAngles.y <= finalDirection[i].y + range)
+            //    &&
+            //    (finalDirection[i].z - range <= transform.eulerAngles.z
+            //    && transform.eulerAngles.z <= finalDirection[i].z + range))
             //{
             //    return true;
             //}
+            if (Vector3.Angle(finalDirection[i].normalized, Vector3.up) < range)
+            {
+                return true;
+            }
         }
         return false;
     }
@@ -91,7 +104,7 @@ public class JudgeFinish : MonoBehaviour {
     public void finish()
     {
         finishText.text = "You are DONE!\nLoading Level 2...";
-        Thread.Sleep(1000);
+        //Thread.Sleep(1000);
         SceneManager.LoadScene(5);
     }
 }
