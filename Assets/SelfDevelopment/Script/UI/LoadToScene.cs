@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using System.Threading;
 
 public class LoadToScene : MonoBehaviour
 {
@@ -14,6 +15,13 @@ public class LoadToScene : MonoBehaviour
 
     public void LoadToSceneIndex()
     {
+        StartCoroutine(Fading());
+    }
+
+    IEnumerator Fading()
+    {
+        float time = GameObject.FindWithTag("Fade").GetComponent<SceneFadeInOut>().BeginFade(1);
+        yield return new WaitForSeconds(time);
         SceneManager.LoadScene(SceneIndex);
     }
 }

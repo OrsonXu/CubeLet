@@ -1,0 +1,7 @@
+- scene/music fade in out
+- music between level *
+- music for button *
+- load object for different level
+  - difference scene
+  - same scene but different object
+- control panel *
