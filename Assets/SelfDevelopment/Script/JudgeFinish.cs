@@ -79,6 +79,7 @@ public class JudgeFinish : MonoBehaviour {
     {
         finishText.text = "You are DONE!\nLoading Level " + (IndexID + 1).ToString() + "...";
         StartCoroutine(Fading());
+        LevelSystem.SetLevels(("level" + (IndexID + 1).ToString()), false);
     }
 
     IEnumerator Fading()
