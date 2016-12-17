@@ -25,6 +25,7 @@ public class FindBackgoundMusic : MonoBehaviour {
     {
         //AudioSource audioSource = GameObject.Find("BackgroundMusicStartMain").GetComponent<AudioSource>();
         audioSource.volume = value;
+        Debug.Log("Background volume : " + value.ToString());
     }
 
 

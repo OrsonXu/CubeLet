@@ -8,10 +8,11 @@ using Leap.Unity;
 
 public class CubeLetRotation : MonoBehaviour {
 
-    public GameObject LeapHandController;
     public float RotationSpeed = 10f;
     public float RotationScale = 1.0f;
     public Slider SensibilitySlider;
+
+    GameObject LeapHandController;
 
     Quaternion handRotation;
     Quaternion lastHandRotation;
@@ -30,6 +31,7 @@ public class CubeLetRotation : MonoBehaviour {
     LeapServiceProvider leapServiceProvider;
 
 	void Start () {
+        LeapHandController = GameObject.FindWithTag("LeapHandController");
         leapServiceProvider = LeapHandController.GetComponent<LeapServiceProvider>();
         //lastHandRotation = Quaternion.identity;
         isInitial = true;

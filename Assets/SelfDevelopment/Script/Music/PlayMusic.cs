@@ -11,6 +11,7 @@ public class PlayMusic : MonoBehaviour {
 
     void Awake()
     {
+        // Singelton mode
         if (instance != null && instance != this)
         {
             Destroy(this.gameObject);
@@ -32,7 +33,7 @@ public class PlayMusic : MonoBehaviour {
         }
         else
         {
-            // Not the first time entering the scene
+            // Not the first time entering the scene, fade in
             if (audioSource.volume < normalVolume)
             {
                 audioSource.volume += normalVolume / fadeTime * Time.deltaTime;
@@ -48,7 +49,7 @@ public class PlayMusic : MonoBehaviour {
 
     void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
-         //Fade in 
+        //Fade in 
         if (SceneManager.GetActiveScene().buildIndex > 3)
         {
             audioSource = GetComponent<AudioSource>();

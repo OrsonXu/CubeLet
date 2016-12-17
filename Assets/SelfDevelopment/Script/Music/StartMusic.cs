@@ -11,6 +11,7 @@ public class StartMusic : MonoBehaviour {
 
     void Awake()
     {
+        // Singelton mode
         if (instance != null && instance != this)
         {
             Destroy(this.gameObject);
@@ -22,23 +23,26 @@ public class StartMusic : MonoBehaviour {
         DontDestroyOnLoad(this.gameObject);
     }
 
-    void Update()
+
+    void OnEnable()
     {
+        SceneManager.sceneLoaded += OnLevelFinishedLoading;
+    }
+
+    void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
+    {
+        Debug.Log(PlayerPrefs.GetInt("LastSceneIndex"));
         if (SceneManager.GetActiveScene().buildIndex > 3)
         {
-            if (audioSource.volume > 0)
-                audioSource.volume -= normalVolume * fadeTime * Time.deltaTime;
+            audioSource.volume = 0;
         }
-        else
+        else if (PlayerPrefs.GetInt("LastSceneIndex") > 3)
         {
-            // If back to the first four scenes, new an audioSource
-            if (audioSource.volume < normalVolume)
-            {
-                audioSource = GetComponent<AudioSource>();
-                audioSource.volume = normalVolume;
-                audioSource.Play();
-                audioSource.loop = true;
-            }
+            //If back to the first four scenes, new an audioSource
+            audioSource = GetComponent<AudioSource>();
+            audioSource.volume = normalVolume;
+            audioSource.Play();
+            audioSource.loop = true;
         }
     }
 

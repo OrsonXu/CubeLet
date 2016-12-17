@@ -16,6 +16,7 @@ public class LoadToScene : MonoBehaviour
     public void LoadToSceneIndex()
     {
         StartCoroutine(Fading());
+        PlayerPrefs.SetInt("LastSceneIndex", SceneManager.GetActiveScene().buildIndex);
     }
 
     IEnumerator Fading()
