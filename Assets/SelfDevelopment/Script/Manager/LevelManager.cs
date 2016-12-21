@@ -21,7 +21,7 @@ public class LevelManager : MonoBehaviour {
             prefab.transform.localScale = new Vector3(1, 1, 1);
 
             prefab.GetComponent<LevelEvent>().level = l;
-            prefab.name = "Level";
+            prefab.name = l.Name;
         }
     }
 

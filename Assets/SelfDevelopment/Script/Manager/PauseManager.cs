@@ -39,4 +39,15 @@ public class PauseManager : MonoBehaviour
             Application.Quit();
 #endif
     }
+
+    public void SetVolume()
+    {
+        Slider slider = transform.FindChild("MusicVolumnSlider").GetComponent<Slider>();
+        slider.value = 0.2f;
+        slider.value = PlayerPrefs.GetFloat("MusicVolume");
+        Slider slider2 = transform.FindChild("SensibilitySlider").GetComponent<Slider>();
+        slider2.value = 1;
+        slider2.value = PlayerPrefs.GetFloat("SenibilityVolume");
+    }
+
 }

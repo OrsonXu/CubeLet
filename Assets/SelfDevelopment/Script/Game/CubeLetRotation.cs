@@ -110,6 +110,7 @@ public class CubeLetRotation : MonoBehaviour {
     public void RotationScaleChange(float newScale)
     {
         RotationScale = newScale;
+        PlayerPrefs.SetFloat("SenibilityVolume", newScale);
     }
 
     

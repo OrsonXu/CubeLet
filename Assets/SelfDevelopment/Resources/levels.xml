@@ -1,18 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <levels>
-  <level id="1" name="level1" locked="0" />
-  <level id="2" name="level2" locked="0" />
-  <level id="3" name="level3" locked="0" />
-  <level id="4" name="level4" locked="0" />
-  <level id="5" name="level5" locked="1" />
-  <level id="6" name="level6" locked="1" />
-  <level id="7" name="level7" locked="1" />
-  <level id="8" name="level8" locked="1" />
-  <level id="9" name="level9" locked="1" />
-  <level id="10" name="level10" locked="1" />
-  <level id="11" name="level11" locked="1" />
-  <level id="12" name="level12" locked="1" />
-  <level id="13" name="level13" locked="1" />
-  <level id="14" name="level14" locked="1" />
-  <level id="15" name="level15" locked="1" />
+  <level id="1" name="Level1" locked="0" />
+  <level id="2" name="Level2" locked="0" />
+  <level id="3" name="Level3" locked="0" />
+  <level id="4" name="Level4" locked="0" />
+  <level id="5" name="Level5" locked="1" />
+  <level id="6" name="Level6" locked="1" />
+  <level id="7" name="Level7" locked="1" />
+  <level id="8" name="Level8" locked="1" />
+  <level id="9" name="Level9" locked="1" />
+  <level id="10" name="Level10" locked="1" />
+  <level id="11" name="Level11" locked="1" />
+  <level id="12" name="Level12" locked="1" />
+  <level id="13" name="Level13" locked="1" />
+  <level id="14" name="Level14" locked="1" />
+  <level id="15" name="Level15" locked="1" />
 </levels>

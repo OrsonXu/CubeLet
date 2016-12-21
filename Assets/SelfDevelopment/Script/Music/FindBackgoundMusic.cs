@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class FindBackgoundMusic : MonoBehaviour {
 
     AudioSource audioSource;
     void Awake()
     {
-        if (GameObject.Find("BackgroundMusicStartMain"))
+        if (SceneManager.GetActiveScene().buildIndex <= 3)
         {
             audioSource = GameObject.Find("BackgroundMusicStartMain").GetComponent<AudioSource>();
         }
@@ -25,7 +26,8 @@ public class FindBackgoundMusic : MonoBehaviour {
     {
         //AudioSource audioSource = GameObject.Find("BackgroundMusicStartMain").GetComponent<AudioSource>();
         audioSource.volume = value;
-        Debug.Log("Background volume : " + value.ToString());
+        //Debug.Log("Background volume : " + value.ToString());
+        PlayerPrefs.SetFloat("MusicVolume", value);
     }
 
 
