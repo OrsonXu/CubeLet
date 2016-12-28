@@ -69,9 +69,9 @@ public class CubeLetRotation : MonoBehaviour {
             timeStamp += Time.deltaTime;
             if (timeStamp > 0.1f)
             {
+                highLighter.ConstantOn(Color.green);
                 if (isInitial)
                 {
-                    highLighter.ConstantOn(Color.green);
                     initialInHandRotation = leapServiceProvider.GetHandRoatatation();
                     initialInCubeRotationEuler = transform.eulerAngles;
                     isInitial = false;
