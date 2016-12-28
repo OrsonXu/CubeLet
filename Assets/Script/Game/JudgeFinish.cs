@@ -5,10 +5,12 @@ using System.Threading;
 using UnityEngine.SceneManagement;
 
 public class JudgeFinish : MonoBehaviour {
-
-    public float range = 5f;
+    
     public Text finishText;
     public GameObject[] points;
+
+    private float range = 5f;
+    private float threshold = 0.3f;
 
     GameObject CubeLet;
     int IndexID;
@@ -49,7 +51,7 @@ public class JudgeFinish : MonoBehaviour {
         if (judge(transform))
         {
             timeStamp += Time.deltaTime;
-            if (timeStamp >= 0.2f)
+            if (timeStamp >= threshold)
             {
                 //Debug.Log("Done");
                 finish();

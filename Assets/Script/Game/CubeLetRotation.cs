@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using Leap;
 using Leap.Unity.Attributes;
 using Leap.Unity;
+using HighlightingSystem;
 
 public class CubeLetRotation : MonoBehaviour {
 
@@ -12,30 +13,43 @@ public class CubeLetRotation : MonoBehaviour {
     public float RotationScale = 1.0f;
     public Slider SensibilitySlider;
 
-    GameObject LeapHandController;
+    float DetectionRange = 0.1f;
 
-    Quaternion handRotation;
-    Quaternion lastHandRotation;
-
-    Vector3 handRotationEuler;
-    Vector3 lastHandRotationEuler;
-
-    Vector3 initialInHandRotationEuler;
-    Quaternion initialInHandRotation;
-    Vector3 initialInCubeRotationEuler;
-    Vector3 initialHandDirection;
-    bool isInitial;
-
-    float timeStamp;
-
+    GameObject leapHandController;
     LeapServiceProvider leapServiceProvider;
 
+    /// <summary>
+    /// Hand position and rotation
+    /// </summary>
+    Vector3 handPosition;
+    Quaternion initialInHandRotation;
+    Quaternion handRotation;
+    Vector3 handRotationEuler;
+    /// <summary>
+    /// Cube rotation when the hand is detected by the leapmotion
+    /// </summary>
+    Vector3 initialInCubeRotationEuler;
+    /// <summary>
+    /// Initial frame flag
+    /// </summary>
+    bool isInitial;
+
+    float dectionDist;
+    float timeStamp;
+
+    Highlighter highLighter;
+
 	void Start () {
-        LeapHandController = GameObject.FindWithTag("LeapHandController");
-        leapServiceProvider = LeapHandController.GetComponent<LeapServiceProvider>();
-        //lastHandRotation = Quaternion.identity;
+        leapHandController = GameObject.FindWithTag("LeapHandController");
+        leapServiceProvider = leapHandController.GetComponent<LeapServiceProvider>();
         isInitial = true;
         SensibilitySlider.onValueChanged.AddListener(RotationScaleChange);
+        highLighter = GetComponent<Highlighter>();
+        if (highLighter == null)
+        {
+            highLighter = gameObject.AddComponent<Highlighter>();
+        }
+        dectionDist = DetectionRange * DetectionRange;
 	}
 
     void FixedUpdate()
@@ -43,16 +57,23 @@ public class CubeLetRotation : MonoBehaviour {
         //handRotation = Quaternion.identity;
         if (leapServiceProvider.HasHand())
         {
-            //Debug.Log(leapServiceProvider.GetHandRoatatation());
+            // Make sure the hand is in the range
+            handPosition = leapServiceProvider.GetHandPosition();
+            // Only x and z are taken into consideration
+            float dist = handPosition.x * handPosition.x + handPosition.z * handPosition.z;
+            if (dist > dectionDist)
+            {
+                highLighter.ConstantOff();
+                return;
+            }
             timeStamp += Time.deltaTime;
             if (timeStamp > 0.1f)
             {
                 if (isInitial)
                 {
-                    initialInHandRotationEuler = leapServiceProvider.GetHandRotationEuler();
+                    highLighter.ConstantOn(Color.green);
                     initialInHandRotation = leapServiceProvider.GetHandRoatatation();
                     initialInCubeRotationEuler = transform.eulerAngles;
-                    initialHandDirection = leapServiceProvider.GetHandDirection();
                     isInitial = false;
                 }
                 else
@@ -63,45 +84,24 @@ public class CubeLetRotation : MonoBehaviour {
 
                     //Vector3 deltaEuler = handRotationEuler - initialInHandRotationEuler;
 
-                    //this is wrong!
-                    Quaternion deltaEuler = Quaternion.FromToRotation(initialHandDirection, leapServiceProvider.GetHandDirection());
-
-                    // Another test
-                    //Quaternion tmp = Quaternion.RotateTowards(initialInHandRotation, handRotation, 1000f);
                     Quaternion tmp = handRotation * Quaternion.Inverse(initialInHandRotation);
-
-
-                    //Debug.Log(tmp.eulerAngles);
-                    //if (tmp.eulerAngles.x < 10)
-                    //{
-                    //    tmp.SetEulerAngles(360 - tmp.eulerAngles.x, tmp.eulerAngles.y, tmp.eulerAngles.z); 
-                    //}
-                    //if (tmp.eulerAngles.y < 10)
-                    //{
-                    //    tmp.SetEulerAngles(tmp.eulerAngles.x, 360 - tmp.eulerAngles.y, tmp.eulerAngles.z);
-                    //}
-                    //if (tmp.eulerAngles.z < 10)
-                    //{
-                    //    tmp.SetEulerAngles(tmp.eulerAngles.x, tmp.eulerAngles.y, 360 - tmp.eulerAngles.z);
-                    //}
-
-                    //deltaEuler = Quaternion.LookRotation(MainCameraTransform.eulerAngles) * deltaEuler;
-                    //deltaEuler = Quaternion.FromToRotation(initialHandDirection, Vector3.forward) * deltaEuler;
-
-                    // Good now
-                    //transform.rotation = Quaternion.Slerp(transform.rotation,
-                    //    Quaternion.Euler(deltaEuler) * Quaternion.Euler(initialInCubeRotationEuler),
-                    //    Time.deltaTime * RotationSpeed * RotationScale);
 
                     transform.rotation = Quaternion.Slerp(transform.rotation,
                         tmp * Quaternion.Euler(initialInCubeRotationEuler),
                         Time.deltaTime * RotationSpeed * RotationScale);
+
+                    //Vector3 handpos = leapServiceProvider.GetHandPosition();
+                    ////float dist = Vector3.Distance(handpos, gameObject.transform.position);
+                    //float dist = Vector3.Distance(handpos, new Vector3(0,0,0));
+
+                    //Debug.Log(dist);
 
                 }
             }
         }
         else
         {
+            highLighter.ConstantOff();
             isInitial = true;
             timeStamp = 0f;
         }

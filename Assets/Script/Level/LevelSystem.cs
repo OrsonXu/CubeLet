@@ -6,7 +6,7 @@ using System.Xml;
 public static class LevelSystem 
 {
 
-    private static string filePath = Application.dataPath + "/SelfDevelopment/Resources/levels.xml";
+    private static string filePath = Application.dataPath + "/Resources/levels.xml";
     public static List<Level> LoadLevels()
     {
 
