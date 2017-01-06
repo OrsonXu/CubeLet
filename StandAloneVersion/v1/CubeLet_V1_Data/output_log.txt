@@ -6,42 +6,190 @@ Direct3D:
     Vendor:   Intel
     VRAM:     1136 MB
 Begin MonoManager ReloadAssembly
-Platform assembly: C:\Users\orson\Desktop\tsinghua myself\ProjectRepo\CubeLet_V1_Data\Managed\UnityEngine.dll (this message is harmless)
-Loading C:\Users\orson\Desktop\tsinghua myself\ProjectRepo\CubeLet_V1_Data\Managed\UnityEngine.dll into Unity Child Domain
-Platform assembly: C:\Users\orson\Desktop\tsinghua myself\ProjectRepo\CubeLet_V1_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
-Loading C:\Users\orson\Desktop\tsinghua myself\ProjectRepo\CubeLet_V1_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
-Platform assembly: C:\Users\orson\Desktop\tsinghua myself\ProjectRepo\CubeLet_V1_Data\Managed\Assembly-CSharp.dll (this message is harmless)
-Loading C:\Users\orson\Desktop\tsinghua myself\ProjectRepo\CubeLet_V1_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-Platform assembly: C:\Users\orson\Desktop\tsinghua myself\ProjectRepo\CubeLet_V1_Data\Managed\UnityEngine.UI.dll (this message is harmless)
-Loading C:\Users\orson\Desktop\tsinghua myself\ProjectRepo\CubeLet_V1_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-Platform assembly: C:\Users\orson\Desktop\tsinghua myself\ProjectRepo\CubeLet_V1_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
-Loading C:\Users\orson\Desktop\tsinghua myself\ProjectRepo\CubeLet_V1_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-Platform assembly: C:\Users\orson\Desktop\tsinghua myself\ProjectRepo\CubeLet_V1_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
-Loading C:\Users\orson\Desktop\tsinghua myself\ProjectRepo\CubeLet_V1_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
-Platform assembly: C:\Users\orson\Desktop\tsinghua myself\ProjectRepo\CubeLet_V1_Data\Managed\LeapCSharp.NET3.5.dll (this message is harmless)
-Loading C:\Users\orson\Desktop\tsinghua myself\ProjectRepo\CubeLet_V1_Data\Managed\LeapCSharp.NET3.5.dll into Unity Child Domain
-- Completed reload, in  0.065 seconds
-Platform assembly: C:\Users\orson\Desktop\tsinghua myself\ProjectRepo\CubeLet_V1_Data\Managed\System.Core.dll (this message is harmless)
-Platform assembly: C:\Users\orson\Desktop\tsinghua myself\ProjectRepo\CubeLet_V1_Data\Managed\System.dll (this message is harmless)
+Platform assembly: C:\Users\orson\Desktop\tsinghua myself\ProjectRepo\CubeLet\StandAloneVersion\v1\CubeLet_V1_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\orson\Desktop\tsinghua myself\ProjectRepo\CubeLet\StandAloneVersion\v1\CubeLet_V1_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\orson\Desktop\tsinghua myself\ProjectRepo\CubeLet\StandAloneVersion\v1\CubeLet_V1_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading C:\Users\orson\Desktop\tsinghua myself\ProjectRepo\CubeLet\StandAloneVersion\v1\CubeLet_V1_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\orson\Desktop\tsinghua myself\ProjectRepo\CubeLet\StandAloneVersion\v1\CubeLet_V1_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\orson\Desktop\tsinghua myself\ProjectRepo\CubeLet\StandAloneVersion\v1\CubeLet_V1_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\orson\Desktop\tsinghua myself\ProjectRepo\CubeLet\StandAloneVersion\v1\CubeLet_V1_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\orson\Desktop\tsinghua myself\ProjectRepo\CubeLet\StandAloneVersion\v1\CubeLet_V1_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\orson\Desktop\tsinghua myself\ProjectRepo\CubeLet\StandAloneVersion\v1\CubeLet_V1_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\orson\Desktop\tsinghua myself\ProjectRepo\CubeLet\StandAloneVersion\v1\CubeLet_V1_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\orson\Desktop\tsinghua myself\ProjectRepo\CubeLet\StandAloneVersion\v1\CubeLet_V1_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
+Loading C:\Users\orson\Desktop\tsinghua myself\ProjectRepo\CubeLet\StandAloneVersion\v1\CubeLet_V1_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
+Platform assembly: C:\Users\orson\Desktop\tsinghua myself\ProjectRepo\CubeLet\StandAloneVersion\v1\CubeLet_V1_Data\Managed\LeapCSharp.NET3.5.dll (this message is harmless)
+Loading C:\Users\orson\Desktop\tsinghua myself\ProjectRepo\CubeLet\StandAloneVersion\v1\CubeLet_V1_Data\Managed\LeapCSharp.NET3.5.dll into Unity Child Domain
+- Completed reload, in  0.052 seconds
+Platform assembly: C:\Users\orson\Desktop\tsinghua myself\ProjectRepo\CubeLet\StandAloneVersion\v1\CubeLet_V1_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\orson\Desktop\tsinghua myself\ProjectRepo\CubeLet\StandAloneVersion\v1\CubeLet_V1_Data\Managed\System.dll (this message is harmless)
 desktop: 1366x768 60Hz; virtual: 1366x768 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 0.890662 ms
-4
+UnloadTime: 0.853788 ms
+0
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
 
 Setting up 1 worker threads for Enlighten.
-  Thread -> id: 2bbc -> priority: 1 
-Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 8.366446 ms
-Platform assembly: C:\Users\orson\Desktop\tsinghua myself\ProjectRepo\CubeLet_V1_Data\Managed\System.Xml.dll (this message is harmless)
+  Thread -> id: 2714 -> priority: 1 
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 19.661470 ms
 0
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
 
 
-Unloading 23 unused Assets to reduce memory usage. Loaded Objects now: 1000.
-Total: 1.005843 ms (FindLiveObjects: 0.072986 ms CreateObjectMapping: 0.040294 ms MarkObjects: 0.866333 ms  DeleteObjects: 0.022808 ms)
+Unloading 11 unused Assets to reduce memory usage. Loaded Objects now: 439.
+Total: 1.038535 ms (FindLiveObjects: 0.060441 ms CreateObjectMapping: 0.091993 ms MarkObjects: 0.825658 ms  DeleteObjects: 0.040294 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.970632 ms
+1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+
+Unloading 13 unused Assets to reduce memory usage. Loaded Objects now: 425.
+Total: 0.886100 ms (FindLiveObjects: 0.065763 ms CreateObjectMapping: 0.065763 ms MarkObjects: 0.716939 ms  DeleteObjects: 0.036493 ms)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.024850 ms
+0
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+
+Unloading 9 unused Assets to reduce memory usage. Loaded Objects now: 413.
+Total: 0.806651 ms (FindLiveObjects: 0.055500 ms CreateObjectMapping: 0.058541 ms MarkObjects: 0.663339 ms  DeleteObjects: 0.028130 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.260916 ms
+2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+
+Unloading 9 unused Assets to reduce memory usage. Loaded Objects now: 425.
+Total: 0.946162 ms (FindLiveObjects: 0.085150 ms CreateObjectMapping: 0.091613 ms MarkObjects: 0.735946 ms  DeleteObjects: 0.031551 ms)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.141172 ms
+Platform assembly: C:\Users\orson\Desktop\tsinghua myself\ProjectRepo\CubeLet\StandAloneVersion\v1\CubeLet_V1_Data\Managed\System.Xml.dll (this message is harmless)
+0
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+
+Unloading 21 unused Assets to reduce memory usage. Loaded Objects now: 1000.
+Total: 1.040816 ms (FindLiveObjects: 0.055880 ms CreateObjectMapping: 0.041815 ms MarkObjects: 0.924494 ms  DeleteObjects: 0.018246 ms)
+
+Level now : Level1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Unloading 7 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 2.575811 ms
+0
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+
+Unloading 34 unused Assets to reduce memory usage. Loaded Objects now: 781.
+Total: 0.754953 ms (FindLiveObjects: 0.058921 ms CreateObjectMapping: 0.036873 ms MarkObjects: 0.626086 ms  DeleteObjects: 0.032311 ms)
+
+HighlightingSystem : Framebuffer depth data is not available and can't be used to occlude highlighting. Highlighting occluders enabled.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Unloading 8 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 10.569344 ms
+0
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+
+Unloading 9 unused Assets to reduce memory usage. Loaded Objects now: 886.
+Total: 0.972011 ms (FindLiveObjects: 0.058541 ms CreateObjectMapping: 0.036493 ms MarkObjects: 0.827179 ms  DeleteObjects: 0.048657 ms)
+
+HighlightingSystem : Framebuffer depth data is not available and can't be used to occlude highlighting. Highlighting occluders enabled.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Unloading 7 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.826940 ms
+0
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+
+Unloading 9 unused Assets to reduce memory usage. Loaded Objects now: 926.
+Total: 1.090614 ms (FindLiveObjects: 0.072606 ms CreateObjectMapping: 0.035352 ms MarkObjects: 0.918412 ms  DeleteObjects: 0.063482 ms)
+
+HighlightingSystem : Framebuffer depth data is not available and can't be used to occlude highlighting. Highlighting occluders enabled.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 2.221903 ms
+6
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+
+Unloading 24 unused Assets to reduce memory usage. Loaded Objects now: 1019.
+Total: 1.873697 ms (FindLiveObjects: 0.117842 ms CreateObjectMapping: 0.063102 ms MarkObjects: 1.589354 ms  DeleteObjects: 0.102256 ms)
+
+Level now : Level3
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Unloading 8 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.368114 ms
+6
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+
+Unloading 31 unused Assets to reduce memory usage. Loaded Objects now: 929.
+Total: 1.776762 ms (FindLiveObjects: 0.111000 ms CreateObjectMapping: 0.078308 ms MarkObjects: 1.506104 ms  DeleteObjects: 0.079068 ms)
+
+HighlightingSystem : Framebuffer depth data is not available and can't be used to occlude highlighting. Highlighting occluders enabled.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Unloading 7 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 4.655163 ms
+6
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+
+Unloading 11 unused Assets to reduce memory usage. Loaded Objects now: 1011.
+Total: 2.024612 ms (FindLiveObjects: 0.285863 ms CreateObjectMapping: 0.113661 ms MarkObjects: 1.495460 ms  DeleteObjects: 0.127346 ms)
+
+HighlightingSystem : Framebuffer depth data is not available and can't be used to occlude highlighting. Highlighting occluders enabled.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 2.474315 ms
+7
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+
+Unloading 43 unused Assets to reduce memory usage. Loaded Objects now: 544.
+Total: 1.137751 ms (FindLiveObjects: 0.085150 ms CreateObjectMapping: 0.086291 ms MarkObjects: 0.765216 ms  DeleteObjects: 0.199952 ms)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.576050 ms
+0
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 42)
+
+
+Unloading 21 unused Assets to reduce memory usage. Loaded Objects now: 1120.
+Total: 3.070370 ms (FindLiveObjects: 0.149774 ms CreateObjectMapping: 0.099215 ms MarkObjects: 2.761318 ms  DeleteObjects: 0.057780 ms)
 
