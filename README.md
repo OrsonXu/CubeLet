@@ -4,5 +4,6 @@ This is a game based on Leap Motion. After plugging in the Leap Motion, player c
 - Install the basic driver of Leap Motion downloaded form its website. 
 - Plug in Leap Motion
 - Run `\StandAloneVersion\v1\CubeLet_V1.exe` and have fun!
+
 ---
 First Version Finished in Dec/2016
